@@ -117,10 +117,10 @@ class BlumClient(Session):
             res = self.post(URL_PLAY_START)
             if res.status_code == 200:
                 data = res.json()
-                data['points'] = game_points = randrange(150, 250)
-                sleep(30)  # Там вроде около 30 секунд
+                data['points'] = game_points = randrange(300, 400)
+                sleep(30)
                 while True:
-                    logging.info(f"Отправка рандомного результата игры {game_points}")
+                    logging.info(f"Отправка результата игры {game_points}")
                     result = self.post(URL_PLAY_CLAIM, json=data)
                     if result.status_code == 200:
                         break
